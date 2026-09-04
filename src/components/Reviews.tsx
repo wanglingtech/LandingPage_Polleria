@@ -7,10 +7,13 @@ export const Reviews: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const offset = direction === 'left' ? -340 : 340;
-      scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
-    }
+    const container = scrollRef.current;
+    const firstCard = container?.querySelector<HTMLElement>('[data-carousel-card]');
+    if (!container || !firstCard) return;
+
+    const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
+    const offset = firstCard.offsetWidth + gap;
+    container.scrollBy({ left: direction === 'left' ? -offset : offset, behavior: 'smooth' });
   };
 
   return (
@@ -32,18 +35,18 @@ export const Reviews: React.FC = () => {
           </div>
 
           {/* Navigation Arrows */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto sm:justify-start">
             <button
               onClick={() => scroll('left')}
               aria-label="Opinión anterior"
-              className="p-2.5 rounded-2xl bg-neutral-800/90 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700 shadow-sm transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-neutral-800/90 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700 shadow-sm transition-transform active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => scroll('right')}
               aria-label="Siguiente opinión"
-              className="p-2.5 rounded-2xl bg-neutral-800/90 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700 shadow-sm transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-neutral-800/90 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700 shadow-sm transition-transform active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -53,12 +56,13 @@ export const Reviews: React.FC = () => {
         {/* Carousel / Grid of Reviews */}
         <div
           ref={scrollRef}
-          className="flex items-stretch gap-4 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth"
+          className="flex items-stretch gap-4 overflow-x-auto no-scrollbar py-2 px-4 sm:px-1 -mx-4 sm:mx-0 scroll-smooth snap-x snap-mandatory scroll-px-4 sm:scroll-px-1 touch-pan-x"
         >
           {REVIEWS.map((rev) => (
             <div
               key={rev.id}
-              className="flex-shrink-0 w-80 sm:w-[380px] bg-neutral-900/90 rounded-3xl border border-neutral-800 p-6 flex flex-col justify-between shadow-lg space-y-4 hover:border-neutral-700 transition-colors"
+              data-carousel-card
+              className="flex-none snap-center w-[min(23.75rem,calc(100vw-2rem))] bg-neutral-900/90 rounded-3xl border border-neutral-800 p-5 sm:p-6 flex flex-col justify-between shadow-lg space-y-4 hover:border-neutral-700 transition-colors"
             >
               <div className="space-y-3">
                 {/* Rating Stars & Quote Icon */}
@@ -112,4 +116,3 @@ export const Reviews: React.FC = () => {
     </section>
   );
 };
-

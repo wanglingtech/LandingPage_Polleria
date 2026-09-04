@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { CATEGORIES } from '../data/categories';
 import { useCart } from '../context/CartContext';
-import { Heart, Sparkles, Flame } from 'lucide-react';
+import { Heart, Flame } from 'lucide-react';
+import { useAutoHorizontalScroll } from '../hooks/useAutoHorizontalScroll';
 
 interface CategoriesProps {
   selectedCategory: string;
@@ -17,6 +18,22 @@ export const Categories: React.FC<CategoriesProps> = ({
   onToggleFavoritesOnly,
 }) => {
   const { favorites } = useCart();
+  const categoryScrollRef = useRef<HTMLDivElement>(null);
+  const { pauseTemporarily } = useAutoHorizontalScroll(categoryScrollRef, {
+    speed: 0.28,
+    resetDelay: 700,
+    pauseAfterInteraction: 3000,
+  });
+
+  const handleFavoritesClick = () => {
+    pauseTemporarily();
+    onToggleFavoritesOnly();
+  };
+
+  const handleCategoryClick = (categoryId: string) => {
+    pauseTemporarily();
+    onSelectCategory(categoryId);
+  };
 
   return (
     <section id="categorias" className="py-7 bg-white border-b border-neutral-200/80">
@@ -37,12 +54,15 @@ export const Categories: React.FC<CategoriesProps> = ({
         </div>
 
         {/* Bento Pills Grid / Horizontal Scroll */}
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-2 px-4 sm:px-0 -mx-4 sm:mx-0 scroll-smooth">
+        <div
+          ref={categoryScrollRef}
+          className="flex items-center gap-2.5 overflow-x-auto overflow-y-visible no-scrollbar py-3 px-4 sm:px-0 -mx-4 sm:mx-0 scroll-smooth touch-pan-x"
+        >
           {/* Favorites Filter Chip */}
           <button
             id="cat-btn-favoritos"
-            onClick={onToggleFavoritesOnly}
-            className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer shadow-sm ${
+            onClick={handleFavoritesClick}
+            className={`flex-none whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer shadow-sm origin-center ${
               showFavoritesOnly
                 ? 'bg-rose-600 text-white shadow-rose-600/30 scale-105 border border-rose-700'
                 : 'bg-[#FAF8F5] hover:bg-neutral-100 text-neutral-700 border border-neutral-200/90'
@@ -69,8 +89,8 @@ export const Categories: React.FC<CategoriesProps> = ({
               <button
                 key={cat.id}
                 id={`cat-btn-${cat.id}`}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer shadow-sm ${
+                onClick={() => handleCategoryClick(cat.id)}
+                className={`flex-none whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer shadow-sm origin-center ${
                   isSelected
                     ? 'bg-[#141414] text-amber-400 shadow-lg scale-105 border border-neutral-700'
                     : 'bg-[#FAF8F5] hover:bg-neutral-100 text-neutral-800 border border-neutral-200/90'
@@ -86,4 +106,3 @@ export const Categories: React.FC<CategoriesProps> = ({
     </section>
   );
 };
-

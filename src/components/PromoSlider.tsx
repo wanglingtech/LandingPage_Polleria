@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight, Sparkles, Flame, ArrowRight, Tag, Percent } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Sparkles, Flame, ArrowRight, Tag } from 'lucide-react';
 import { PROMO_BANNERS } from '../data/offers';
 import { PromoBanner } from '../types';
 import { RESTAURANT_CONFIG } from '../config';
@@ -87,18 +87,18 @@ export const PromoSlider: React.FC<PromoSliderProps> = ({ onSelectProduct }) => 
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto sm:justify-start">
             <button
               onClick={prevSlide}
               aria-label="Promoción anterior"
-              className="p-2.5 rounded-2xl bg-white hover:bg-neutral-100 border border-neutral-200/90 text-neutral-800 shadow-sm transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-white hover:bg-neutral-100 border border-neutral-200/90 text-neutral-800 shadow-sm transition-transform active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
               aria-label="Siguiente promoción"
-              className="p-2.5 rounded-2xl bg-white hover:bg-neutral-100 border border-neutral-200/90 text-neutral-800 shadow-sm transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-white hover:bg-neutral-100 border border-neutral-200/90 text-neutral-800 shadow-sm transition-transform active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -106,7 +106,7 @@ export const PromoSlider: React.FC<PromoSliderProps> = ({ onSelectProduct }) => 
         </div>
 
         {/* Bento Promotion Container */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[360px] sm:min-h-[380px] lg:min-h-[420px] bg-[#141414] border border-neutral-800">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[380px] sm:min-h-[380px] lg:min-h-[420px] bg-[#141414] border border-neutral-800">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPromo.id}
@@ -114,7 +114,7 @@ export const PromoSlider: React.FC<PromoSliderProps> = ({ onSelectProduct }) => 
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.35 }}
-              className={`w-full h-full min-h-[360px] sm:min-h-[380px] lg:min-h-[420px] bg-gradient-to-r ${currentPromo.bgGradient} relative flex flex-col justify-center text-white overflow-hidden`}
+              className={`w-full h-full min-h-[380px] sm:min-h-[380px] lg:min-h-[420px] bg-gradient-to-r ${currentPromo.bgGradient} relative flex flex-col justify-center text-white overflow-hidden`}
             >
               {/* Background image & subtle overlay */}
               <div className="absolute inset-0 z-0">
@@ -128,7 +128,7 @@ export const PromoSlider: React.FC<PromoSliderProps> = ({ onSelectProduct }) => 
               </div>
 
               {/* Banner Content Grid */}
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-10 lg:p-12 items-center">
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 p-5 min-[360px]:p-6 sm:p-10 lg:p-12 items-center pb-12 sm:pb-10 lg:pb-12">
                 <div className="lg:col-span-7 space-y-3 sm:space-y-4 text-left">
                   {/* Tag Pill */}
                   <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-black tracking-wider uppercase">
@@ -219,4 +219,3 @@ export const PromoSlider: React.FC<PromoSliderProps> = ({ onSelectProduct }) => 
     </section>
   );
 };
-

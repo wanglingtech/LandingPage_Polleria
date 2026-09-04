@@ -10,11 +10,26 @@
     font-family: var(--font-sans);
     overflow-x: hidden;
     width: 100%;
+    max-width: 100vw;
   }
 
   html {
     overflow-x: hidden;
     width: 100%;
+    max-width: 100vw;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6, .font-heading {

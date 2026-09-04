@@ -38,9 +38,10 @@ export const VisualShowcase: React.FC<VisualShowcaseProps> = ({ onExploreMenu })
   useEffect(() => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
-    const firstChild = container.children[0] as HTMLElement;
+    const firstChild = container.querySelector<HTMLElement>('[data-carousel-card]');
     if (firstChild) {
-      const itemWidth = firstChild.offsetWidth + 16; // width + gap
+      const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
+      const itemWidth = firstChild.offsetWidth + gap;
       container.scrollTo({
         left: currentIndex * itemWidth,
         behavior: 'smooth',
@@ -97,18 +98,18 @@ export const VisualShowcase: React.FC<VisualShowcaseProps> = ({ onExploreMenu })
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto sm:justify-start">
             <button
               onClick={prevSlide}
               aria-label="Ver foto anterior"
-              className="p-2.5 sm:p-3 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700/80 shadow-md transition-all active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700/80 shadow-md transition-all active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={nextSlide}
               aria-label="Ver foto siguiente"
-              className="p-2.5 sm:p-3 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700/80 shadow-md transition-all active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700/80 shadow-md transition-all active:scale-95 cursor-pointer flex items-center justify-center"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -121,13 +122,14 @@ export const VisualShowcase: React.FC<VisualShowcaseProps> = ({ onExploreMenu })
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="flex items-stretch gap-3.5 sm:gap-5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth -mx-4 sm:mx-0 px-4 sm:px-0"
+          className="flex items-stretch gap-3.5 sm:gap-5 overflow-x-auto no-scrollbar py-2 px-4 sm:px-0 scroll-smooth -mx-4 sm:mx-0 snap-x snap-mandatory scroll-px-4 sm:scroll-px-0 touch-pan-x"
         >
           {items.map((item) => (
             <div
               key={item.id}
+              data-carousel-card
               onClick={() => onExploreMenu?.()}
-              className="flex-shrink-0 w-[82vw] sm:w-[46vw] lg:w-[31.5%] group relative bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 shadow-xl transition-all duration-300 hover:border-neutral-700 cursor-pointer"
+              className="flex-none snap-center w-[min(22rem,calc(100vw-2rem))] sm:w-[46vw] lg:w-[31.5%] group relative bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 shadow-xl transition-all duration-300 hover:border-neutral-700 cursor-pointer"
             >
               {/* Image Container with aspect ratio */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-950">

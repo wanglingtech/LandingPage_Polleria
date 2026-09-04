@@ -3,6 +3,7 @@ import { Star, ChevronLeft, ChevronRight, Sparkles, Heart } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { RESTAURANT_CONFIG } from '../config';
+import { AppImage } from './common/AppImage';
 
 interface FeaturedProductsProps {
   products: Product[];
@@ -20,10 +21,13 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   const featured = products.filter((p) => p.featured || p.popular).slice(0, 7);
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const offset = direction === 'left' ? -320 : 320;
-      scrollContainerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
-    }
+    const container = scrollContainerRef.current;
+    const firstCard = container?.querySelector<HTMLElement>('[data-carousel-card]');
+    if (!container || !firstCard) return;
+
+    const gap = parseFloat(window.getComputedStyle(container).columnGap || '0');
+    const offset = firstCard.offsetWidth + gap;
+    container.scrollBy({ left: direction === 'left' ? -offset : offset, behavior: 'smooth' });
   };
 
   return (
@@ -42,18 +46,18 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
           </div>
 
           {/* Navigation Arrows */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto sm:justify-start">
             <button
               onClick={() => scroll('left')}
               aria-label="Desplazar a la izquierda"
-              className="w-10 h-10 rounded-2xl bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-300 shadow-sm flex items-center justify-center transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-300 shadow-sm flex items-center justify-center transition-transform active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => scroll('right')}
               aria-label="Desplazar a la derecha"
-              className="w-10 h-10 rounded-2xl bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-300 shadow-sm flex items-center justify-center transition-transform active:scale-95 cursor-pointer"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-2xl bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-300 shadow-sm flex items-center justify-center transition-transform active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -63,7 +67,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
         {/* Horizontal Carousel */}
         <div
           ref={scrollContainerRef}
-          className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth"
+          className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto no-scrollbar py-2 px-4 sm:px-1 -mx-4 sm:mx-0 scroll-smooth snap-x snap-mandatory scroll-px-4 sm:scroll-px-1 touch-pan-x"
         >
           {featured.map((product) => {
             const favorite = isFavorite(product.id);
@@ -71,16 +75,16 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             return (
               <div
                 key={product.id}
+                data-carousel-card
                 onClick={() => onOpenModal(product)}
-                className="flex-shrink-0 w-72 sm:w-80 bg-white rounded-3xl border border-neutral-200/90 shadow-sm hover:shadow-xl hover:border-neutral-300 transition-all duration-300 overflow-hidden flex flex-col justify-between cursor-pointer group"
+                className="flex-none snap-center w-[min(20rem,calc(100vw-2rem))] sm:w-80 bg-white rounded-3xl border border-neutral-200/90 shadow-sm hover:shadow-xl hover:border-neutral-300 transition-all duration-300 overflow-hidden flex flex-col justify-between cursor-pointer group"
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden">
-                  <img
-                    src={product.images[0]}
+                  <AppImage
+                    src={product.images[0] || ''}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70" />
 
