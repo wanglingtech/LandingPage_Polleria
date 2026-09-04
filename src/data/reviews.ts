@@ -1,0 +1,55 @@
+import { Review } from '../types';
+import { ASSET_IMAGES } from './assets';
+
+export const REVIEWS: Review[] = [
+  {
+    id: 'rev-1',
+    name: 'María R.',
+    rating: 5,
+    comment: 'El pollo estuvo crocante y las papas llegaron calientes y en su punto exacto. La vinagreta y el ají pollero son de otro nivel. Muy recomendado para disfrutar en familia.',
+    dish: 'Combo Familiar',
+    date: 'Hace 2 días',
+    verified: true,
+    avatar: ASSET_IMAGES.avatars.maria,
+  },
+  {
+    id: 'rev-2',
+    name: 'Carlos P.',
+    rating: 5,
+    comment: 'El combo familiar tiene muy buena cantidad y las cremas están buenísimas. La piel del pollo doradita y bien sazonada por dentro. Siempre pedimos aquí.',
+    dish: 'Mega Combo Familiar',
+    date: 'Hace 4 días',
+    verified: true,
+    avatar: ASSET_IMAGES.avatars.carlos,
+  },
+  {
+    id: 'rev-3',
+    name: 'Andrea M.',
+    rating: 5,
+    comment: 'Pedimos por WhatsApp y la atención fue inmediata. El motorizado llegó en 25 minutos con todo sellado y bien caliente. ¡Excelente servicio y rapidez!',
+    dish: 'Mostrito Brasa',
+    date: 'Hace 1 semana',
+    verified: true,
+    avatar: ASSET_IMAGES.avatars.patricia,
+  },
+  {
+    id: 'rev-4',
+    name: 'Jorge L.',
+    rating: 5,
+    comment: 'El arroz chaufa del Mostrito tiene ese ahumado auténtico al wok y el pollo a la brasa es súper jugoso. 10 de 10.',
+    dish: 'Mostrito Brasa + Chaufa',
+    date: 'Hace 1 semana',
+    verified: true,
+    avatar: ASSET_IMAGES.avatars.luis,
+  },
+  {
+    id: 'rev-5',
+    name: 'Lucía V.',
+    rating: 5,
+    comment: 'Probamos la Parrilla Familiar el domingo y quedamos encantados. Las chuletas y los anticuchos estaban tiernos y muy bien sazonados.',
+    dish: 'Parrilla Familiar Brasas',
+    date: 'Hace 2 semanas',
+    verified: true,
+    avatar: ASSET_IMAGES.avatars.jorge,
+  },
+];

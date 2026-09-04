@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <script>
+      // Safeguard against scripts or sandbox environments attempting to assign to window.fetch
+      try {
+        if (typeof window !== 'undefined' && window.fetch) {
+          let _fetch = window.fetch.bind(window);
+          Object.defineProperty(window, 'fetch', {
+            get() {
+              return _fetch;
+            },
+            set(newFetch) {
+              _fetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        }
+      } catch (err) {
+        // Continue if defineProperty is not allowed
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brasas del Sabor | Pollo a la Brasa y Delivery</title>
+    <meta name="description" content="Disfruta del auténtico pollo a la brasa peruano, combos familiares, mostritos, chaufa y parrillas. Realiza tu pedido fácilmente por WhatsApp." />
+    <meta property="og:title" content="Brasas del Sabor | Pollo a la Brasa y Delivery" />
+    <meta property="og:description" content="Disfruta del auténtico pollo a la brasa peruano, combos familiares, mostritos, chaufa y parrillas. Realiza tu pedido fácilmente por WhatsApp." />
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#FFFDF9] text-[#1E1A17] font-sans antialiased selection:bg-[#D62828] selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
