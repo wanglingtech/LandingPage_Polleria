@@ -55,17 +55,17 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 
 ## ✨ Funcionalidades
 
-| Ícono | Funcionalidad | Descripción |
-| --- | --- | --- |
-| 🏠 | **Hero principal** | Presentación de la marca y llamadas a la acción. |
-| 🍽️ | **Carta digital** | Catálogo con categorías y búsqueda. |
-| 🔍 | **Detalle de producto** | Modal con información y productos relacionados. |
-| 🏷️ | **Promociones** | Ofertas, descuentos y cupones configurables. |
-| 🛒 | **Carrito** | Cantidades, delivery y total estimado. |
-| ⭐ | **Favoritos** | Productos guardados en localStorage. |
-| 💬 | **WhatsApp** | Acceso directo para consultas o pedidos. |
-| 📍 | **Ubicación** | Dirección, horarios y mapa. |
-| 📱 | **Responsive** | Experiencia adaptada a móvil y escritorio. |
+| Ícono | Funcionalidad           | Descripción                                      |
+| ----- | ----------------------- | ------------------------------------------------ |
+| 🏠    | **Hero principal**      | Presentación de la marca y llamadas a la acción. |
+| 🍽️    | **Carta digital**       | Catálogo con categorías y búsqueda.              |
+| 🔍    | **Detalle de producto** | Modal con información y productos relacionados.  |
+| 🏷️    | **Promociones**         | Ofertas, descuentos y cupones configurables.     |
+| 🛒    | **Carrito**             | Cantidades, delivery y total estimado.           |
+| ⭐    | **Favoritos**           | Productos guardados en localStorage.             |
+| 💬    | **WhatsApp**            | Acceso directo para consultas o pedidos.         |
+| 📍    | **Ubicación**           | Dirección, horarios y mapa.                      |
+| 📱    | **Responsive**          | Experiencia adaptada a móvil y escritorio.       |
 
 ## 🔗 Enlaces
 
@@ -82,7 +82,7 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 
 ## 📁 Estructura del proyecto
 
-~~~text
+```text
 .
 ├── public/                  # Recursos públicos y futuras capturas
 ├── src/
@@ -98,7 +98,7 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 ├── index.html
 ├── package.json
 └── vite.config.ts
-~~~
+```
 
 ## 🚀 Instalación y ejecución
 
@@ -107,23 +107,23 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 - Node.js 18 o superior
 - npm 9 o superior
 
-~~~bash
+```bash
 git clone https://github.com/wanglingtech/LandingPage_Polleria.git
 cd LandingPage_Polleria
 npm install
 npm run dev
-~~~
+```
 
 Abre http://localhost:3000 en tu navegador.
 
 ## 📜 Scripts disponibles
 
-~~~bash
+```bash
 npm run dev      # Servidor de desarrollo
 npm run lint     # Comprueba TypeScript
 npm run build    # Compilación de producción en dist/
 npm run preview  # Previsualiza la compilación
-~~~
+```
 
 ## ⚙️ Configuración
 
@@ -135,18 +135,5 @@ Este repositorio tiene una **licencia de uso personal y demostrativo**. No se pe
 
 ## 👨‍💻 Autor
 
-<div align="center">
-  <img src="./src/assets/img/symbol-only-dark.png" alt="Logo de WangLing Tech" width="120">
-  <h3>WangLing Tech</h3>
-  <p>Desarrollador Full-Stack</p>
-  <p>
-    <a href="https://github.com/wanglingtech">
-      <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-    </a>
-    <a href="mailto:kevinvillegas.dev@gmail.com">
-      <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
-    </a>
-  </p>
-</div>
-
-<div align="center"><p>Hecho con ❤️ usando React, TypeScript y Tailwind CSS.</p></div>
+<div align="center"> <img src="src/assets/img/symbol-only-dark.png" alt="WangLing Tech Logo" width="120"> <h3>WangLing Tech</h3> <p><em>Desarrollador Full-Stack</em></p> <p> <a href="https://github.com/wanglingtech"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"> </a> <a href="https://www.linkedin.com/in/kevin-villegas-solis-7b0038366/"> <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"> </a> <a href="mailto:kevinvillegas.dev@gmail.com"> <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"> </a> <a href="https://www.youtube.com/@xWangLingx"> <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"> </a> </p> </div>
+<div align="center"> <p>Hecho con ❤️ usando TypeScript, React y dedicación para <strong>Brasas del Sabor</strong></p> <p> <img src="https://img.shields.io/badge/Made%20with-React-61DAFB?style=flat-square&logo=react" alt="Made with React"> <img src="https://img.shields.io/badge/Made%20with-TypeScript-3178C6?style=flat-square&logo=typescript" alt="Made with TypeScript"> <img src="https://img.shields.io/badge/Made%20with-Tailwind-06B6D4?style=flat-square&logo=tailwindcss" alt="Made with Tailwind"> </p> </div>
