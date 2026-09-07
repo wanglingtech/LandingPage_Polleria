@@ -3,11 +3,14 @@
   <h3>Landing page gastronómica para pedidos de pollo a la brasa</h3>
   <br>
   <p>
-    <a href="https://ai.studio/apps/5ab29619-592a-4a09-99ee-365277c09c48">
-      <img src="https://img.shields.io/badge/Ver%20en-Google%20AI%20Studio-4285F4?style=for-the-badge&logo=google" alt="Ver en Google AI Studio">
+    <a href="https://github.com/wanglingtech/LandingPage_Polleria">
+      <img src="https://img.shields.io/badge/GitHub-Repositorio-181717?style=for-the-badge&logo=github" alt="Repositorio en GitHub">
+    </a>
+    <a href="https://landing-page-polleria.vercel.app/">
+      <img src="https://img.shields.io/badge/Demo-Vercel-000000?style=for-the-badge&logo=vercel" alt="Demo pública en Vercel">
     </a>
     <img src="https://img.shields.io/badge/Estado-En%20desarrollo-f59e0b?style=for-the-badge" alt="Estado en desarrollo">
-    <img src="https://img.shields.io/badge/Licencia-MIT-16a34a?style=for-the-badge" alt="Licencia MIT">
+    <img src="https://img.shields.io/badge/Licencia-Uso%20personal-7c3aed?style=for-the-badge" alt="Licencia de uso personal">
   </p>
   <p>
     <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React 19">
@@ -21,16 +24,18 @@
 
 ## 📸 Vista previa
 
-> Reemplaza las rutas de ejemplo por tus capturas reales. Guárdalas en public/images/screenshots/.
+Las siguientes imágenes muestran las principales secciones de la interfaz:
 
 <div align="center">
   <table>
-    <tr><td align="center" width="50%"><strong>🏠 Inicio</strong></td><td align="center" width="50%"><strong>🍗 Carta</strong></td></tr>
-    <tr><td><img src="./public/images/screenshots/inicio.png" alt="Página de inicio" width="100%"></td><td><img src="./public/images/screenshots/carta.png" alt="Carta y catálogo" width="100%"></td></tr>
-    <tr><td align="center"><strong>🏷️ Promociones</strong></td><td align="center"><strong>🛒 Carrito</strong></td></tr>
-    <tr><td><img src="./public/images/screenshots/promociones.png" alt="Promociones" width="100%"></td><td><img src="./public/images/screenshots/carrito.png" alt="Carrito de compras" width="100%"></td></tr>
-    <tr><td align="center"><strong>📍 Ubicación</strong></td><td align="center"><strong>💬 WhatsApp</strong></td></tr>
-    <tr><td><img src="./public/images/screenshots/ubicacion.png" alt="Ubicación y mapa" width="100%"></td><td><img src="./public/images/screenshots/whatsapp.png" alt="Contacto por WhatsApp" width="100%"></td></tr>
+    <tr><td align="center" width="50%"><strong>🏠 Inicio</strong></td><td align="center" width="50%"><strong>🍗 Carta de productos</strong></td></tr>
+    <tr><td><img src="./src/assets/interfaces/iniciopollo.webp" alt="Página de inicio" width="100%"></td><td><img src="./src/assets/interfaces/cartade%20productos.webp" alt="Carta de productos" width="100%"></td></tr>
+    <tr><td align="center"><strong>🖼️ Galería visual</strong></td><td align="center"><strong>⚡ Ofertas relámpago</strong></td></tr>
+    <tr><td><img src="./src/assets/interfaces/galeriavisual.webp" alt="Galería visual" width="100%"></td><td><img src="./src/assets/interfaces/ofertas_relampagos.webp" alt="Ofertas relámpago" width="100%"></td></tr>
+    <tr><td align="center"><strong>⭐ Platos estrellas</strong></td><td align="center"><strong>🎁 Promociones especiales</strong></td></tr>
+    <tr><td><img src="./src/assets/interfaces/platos_estrellas.webp" alt="Platos estrellas" width="100%"></td><td><img src="./src/assets/interfaces/promocionesespeciales.webp" alt="Promociones especiales" width="100%"></td></tr>
+    <tr><td align="center" colspan="2"><strong>📍 Punto de venta y cobertura</strong></td></tr>
+    <tr><td colspan="2"><img src="./src/assets/interfaces/puntodeventaycobertura.webp" alt="Punto de venta y cobertura" width="100%"></td></tr>
   </table>
 </div>
 
@@ -62,6 +67,11 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 | 📍 | **Ubicación** | Dirección, horarios y mapa. |
 | 📱 | **Responsive** | Experiencia adaptada a móvil y escritorio. |
 
+## 🔗 Enlaces
+
+- **Repositorio:** https://github.com/wanglingtech/LandingPage_Polleria
+- **Demo pública:** https://landing-page-polleria.vercel.app/
+
 ## 🛠️ Tecnologías
 
 - **React 19** y **TypeScript**
@@ -69,7 +79,6 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 - **Lucide React** para iconos
 - **Motion** para animaciones
 - **Canvas Confetti** para efectos de confirmación
-- **Google GenAI** disponible para futuras integraciones con Gemini
 
 ## 📁 Estructura del proyecto
 
@@ -99,8 +108,8 @@ El visitante puede explorar productos, filtrar por categorías, consultar detall
 - npm 9 o superior
 
 ~~~bash
-git clone <URL_DEL_REPOSITORIO>
-cd pollería-brasas-del-sabor
+git clone https://github.com/wanglingtech/LandingPage_Polleria.git
+cd LandingPage_Polleria
 npm install
 npm run dev
 ~~~
@@ -120,21 +129,24 @@ npm run preview  # Previsualiza la compilación
 
 Actualiza los datos del negocio en src/config.ts: nombre, teléfono, WhatsApp, dirección, mapa, horarios, delivery, redes sociales y cupones. Los productos, categorías, ofertas, reseñas y preguntas frecuentes se gestionan desde src/data/.
 
-Si utilizas Google AI Studio, copia .env.example como .env.local y configura:
-
-~~~env
-GEMINI_API_KEY=tu_clave_de_gemini
-APP_URL=http://localhost:3000
-~~~
-
-No publiques claves privadas en el repositorio.
-
 ## 📄 Licencia
 
-Este proyecto se distribuye bajo la licencia MIT. Consulta [LICENSE](./LICENSE) para conocer los términos completos.
+Este repositorio tiene una **licencia de uso personal y demostrativo**. No se permite el uso comercial, redistribución, reventa ni reproducción sustancial del código sin autorización previa por escrito. Consulta [LICENSE](./LICENSE) para conocer los términos completos.
 
 ## 👨‍💻 Autor
 
-Desarrollado por **WangLing Tech**.
+<div align="center">
+  <img src="./src/assets/img/symbol-only-dark.png" alt="Logo de WangLing Tech" width="120">
+  <h3>WangLing Tech</h3>
+  <p>Desarrollador Full-Stack</p>
+  <p>
+    <a href="https://github.com/wanglingtech">
+      <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+    </a>
+    <a href="mailto:kevinvillegas.dev@gmail.com">
+      <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
+    </a>
+  </p>
+</div>
 
 <div align="center"><p>Hecho con ❤️ usando React, TypeScript y Tailwind CSS.</p></div>
